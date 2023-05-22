@@ -9,7 +9,7 @@ import Complaint from './Student/Complaint';
 import "./Navbar.css";
 // import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar({isstudent}) {
   const [showModal, setShowModal] = useState(false);
 //  const navigate = useNavigate();
 //  function home(e) {
@@ -22,7 +22,7 @@ function Navbar() {
   const closeModal = () => {
     setShowModal(false);
   };
-
+  console.log(isstudent);
   return (
     <>
       <nav
@@ -80,14 +80,6 @@ function Navbar() {
                         Complaint(s) Registration
                       </button>
                     </li>
-                    <li>
-                      <hr class="dropdown-divider" />
-                    </li>
-                    <li>
-                      <a class="dropdown-item dropdown" href="#" >
-                        View Status
-                      </a>
-                    </li>
                   </ul>
                 </li>
               </div>
@@ -112,7 +104,7 @@ function Navbar() {
       </nav>
       {showModal && (
         <Modal onClose={closeModal}>
-          <Complaint />
+          <Complaint isstudent = {isstudent} setShowModal = {setShowModal} />
         </Modal>
       )}
     </>

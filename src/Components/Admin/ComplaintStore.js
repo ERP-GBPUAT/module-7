@@ -1,5 +1,5 @@
 import "./ComplaintStore.css";
-function ComplaintStore() {
+function ComplaintStore({setShowPunishmentModal}) {
   return (
     <div className="complaint_box">
       <div className="row1">
@@ -10,11 +10,14 @@ function ComplaintStore() {
       <div className="row3">
         <div className="type">ABCD</div>
         <div className="leave_det">
-          Lorem fjjrgvgj efrefrjnfjv j4rfrfjfvn fdfmcdmd efrefrnjvn
+          chor hcohotrhaopjsdajkl;kdjasl;kdj
         </div>
       </div>
       <div className="row5">
-        <div className="approve">Approve</div>
+        <div className="approve" onClick={()=>{
+          setShowPunishmentModal(true);
+        }}>Approve</div>
+        <div className="approve">Forward</div>
         <div className="reject">Reject</div>
       </div>
     </div>

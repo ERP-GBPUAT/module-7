@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import ComplaintStore from './ComplaintStore';
-
+import FilterDropDown from '../../Containers/Dropdown';
+import PunishmentModal from '../../Containers/PunishmentModal';
 function Aprofile() { 
     const [complaints,setComplaints] = useState([]);
+    const [showpunishmentmodal,setShowPunishmentModal] = useState(false);
     const fetchAllComplaints = async()=>{
       try {
         const res = await fetch('http://localhost:8080/?/getByLevel/:',{
@@ -19,7 +21,6 @@ function Aprofile() {
       } catch (error) {
         console.log(error);
       }
-      
     }
     return (
       <>
@@ -53,9 +54,12 @@ function Aprofile() {
             </div>
           </div>
         </div>
-        <div className="leave">
-           <ComplaintStore complaints={complaints}/>
-        </div>
+        <FilterDropDown style={{
+          marginLeft :"20px"
+        }}/>
+        {showpunishmentmodal ? <PunishmentModal setShowPunishmentModal = {setShowPunishmentModal}/>:<div className="leave">
+           <ComplaintStore complaints={complaints} setShowPunishmentModal = {setShowPunishmentModal}/>
+        </div>}
       </>
   )
 }

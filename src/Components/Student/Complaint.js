@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './styles.css';
-function Complaint () {
+function Complaint (
+  {isstudent,setShowModal}
+) {
     // const [userData,setUSerData] = useState(JSON.parse(localStorage.getItem("user")))
     // const [complaint,setComplaint]=useState({date:"",studentID:"",desc:""})
 
@@ -23,7 +25,7 @@ function Complaint () {
     //     console.log(error);
     //   }
     // }
-    
+    const [complaintdata , setComplaintData] = useState({});
     return (
       <div class="container">
         <h5 className="col-md-4">Complainant Details-:</h5>
@@ -35,6 +37,10 @@ function Complaint () {
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter your name..."
+              value={complaintdata.name ? complaintdata.name : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"name":e.target.value})
+              }}
               // value={userData?.name}
             />
           </div>
@@ -47,9 +53,13 @@ function Complaint () {
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter your Department"
+              value={complaintdata.department ? complaintdata.department : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"department":e.target.value})
+              }}
             />
           </div>
-          <div class="col-md-4">
+          {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Name of Advisor
             </label>
@@ -58,13 +68,21 @@ function Complaint () {
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter the name of advisor"
+              value={complaintdata.advisor_name ? complaintdata.advisor_name : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"advisor_name":e.target.value})
+              }}
             />
-          </div>
-          <div class="col-md-4">
+          </div>}
+          {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Name of Hostel
             </label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" onChange={(e)=>{
+                setComplaintData({...complaintdata,"hostel_name":e.target.value})
+              }}
+              value={complaintdata.hostel_name ? complaintdata.hostel_name : ""} 
+              >
                 <option selected>Select Hostel Name</option>
                 <option value="1">Tagore Bhawan</option>
                 <option value="2">Patel Bhawan</option>
@@ -73,8 +91,8 @@ function Complaint () {
                 <option value="5">Saraswati Bhawan</option>
                 <option value="6">Mandakini Bhawan</option>
             </select>
-          </div>
-          <div class="col-md-4">
+          </div>}
+          {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Room No.
             </label>
@@ -83,8 +101,12 @@ function Complaint () {
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter your room no."
+              value={complaintdata.room_number ? complaintdata.room_number : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"room_number":e.target.value})
+              }}
             />
-          </div>
+          </div>}
           <div class="col-md-4">
             <label for="inputAddress2" class="form-label">
               Registration date
@@ -93,6 +115,10 @@ function Complaint () {
               type="date"
               class="form-control"
               id="inputAddress2"
+              value={complaintdata.reg_date ? complaintdata.reg_date  : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"reg_date":e.target.value})
+              }}
             />
           </div>
           </form>
@@ -106,13 +132,21 @@ function Complaint () {
               type="date"
               class="form-control"
               id="inputAddress2"
+              value={complaintdata.event_date ? complaintdata.event_date : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"event_date":e.target.value})
+              }}
             />
           </div>
   <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Year of Student
             </label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" aria-label="Default select example" onChange={(e)=>{
+                setComplaintData({...complaintdata,"student_year":e.target.value})
+              }}
+              value={complaintdata.student_year ? complaintdata.student_year : ""} 
+              >
                 <option selected>Select Year</option>
                 <option value="1">1 year</option>
                 <option value="2">2 year</option>
@@ -124,13 +158,21 @@ function Complaint () {
             <label for="autoSizingInput" class="form-label ">
               Incident Description
             </label>
-            <textarea class="form-control" id="textArea" rows="4"></textarea>
+            <textarea class="form-control" id="textArea" rows="4" onChange={(e)=>{
+                setComplaintData({...complaintdata,"incident_description":e.target.value})
+              }}
+              value={complaintdata.incident_description ? complaintdata.incident_description : ""} 
+              ></textarea>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end col-12">
-            <button type="submit" class="btn btn-dark me-md-2">
+            <button type="submit" class="btn btn-dark me-md-2" onClick={()=>{
+              setComplaintData({});
+            }}>
               Reset
             </button>
-            <button type="submit" class="btn btn-danger">
+            <button type="submit" class="btn btn-danger" onClick={()=>{
+              setShowModal(false);
+            }}>
               Register
             </button>
           </div>

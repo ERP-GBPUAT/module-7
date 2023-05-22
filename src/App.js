@@ -6,13 +6,20 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Aprofile from './Components/Admin/Aprofile';
 
 function App() {
+  const [isstudent,setIsstudent] = useState(false);
   return (
       <>
       <Router>
-        <Navbar/>
         <Routes>
-           <Route path='/student' element={<Profile/>} />
-           <Route path='/admin' element={<Aprofile/>} />
+           <Route path='/student' element={
+           <>
+           <Navbar isstudent={true}/>
+           <Profile />
+           </>} />
+           <Route path='/admin' element={<>
+            <Navbar isstudent={false}/>
+            <Aprofile/>
+           </>} />
         </Routes>
       </Router>
       </>

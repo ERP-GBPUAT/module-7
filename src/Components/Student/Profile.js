@@ -2,6 +2,7 @@ import { React } from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import FilterDropDown from "../../Containers/Dropdown";
 
 function Profile () {
     return (
@@ -36,6 +37,9 @@ function Profile () {
             </div>
           </div>
         </div>
+        <FilterDropDown style = {{
+          marginLeft:"20px"
+        }}/>
         <table class="table table-bordered caption-top">
         <caption>List of Complaint(s)</caption>
           <thead class='table-dark'>
