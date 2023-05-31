@@ -1,7 +1,7 @@
 .container {
     position: relative;
     z-index: 1;
-    height: 40rem;
+    height: 30rem;
     width: 50rem;
     margin-top: 10%;
     margin-bottom: 10%;
@@ -80,4 +80,7 @@
 .user-name {
     margin-left: 3rem;
 
+}
+.bottom{
+    padding-top: 30px;
 }

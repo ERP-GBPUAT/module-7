@@ -1,10 +1,25 @@
-import { React } from "react";
+import { React, useState} from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import FilterDropDown from "../../Containers/Dropdown";
+import Complaint from "./infoComplaint"
+import Modal from "./Modal"
 
-function Profile () {
+function Profile ({isstudent}) {
+  const [showModal, setShowModal] = useState(false);
+  //  const navigate = useNavigate();
+  //  function home(e) {
+  //    navigate(`/home`);
+  //  }
+    const openModal = () => {
+      setShowModal(true);
+    };
+  
+    const closeModal = () => {
+      setShowModal(false);
+    };
+    console.log(isstudent);
     return (
       <>
         <div className="black-box">
@@ -53,18 +68,24 @@ function Profile () {
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Electricity</td>
-              <td>18/08/2022</td>
+              <td onClick={openModal}>Electricity</td>
+              <td>18/02/2023</td>
               <td>In progress</td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Furniture</td>
-              <td>11/05/2022</td>
+              <td onClick={openModal}>Furniture</td>
+              <td>14/04/2023</td>
               <td>Completed</td>
             </tr>
           </tbody>
         </table>
+        {showModal && (
+        <Modal onClose={closeModal}>
+          <Complaint isstudent = {isstudent} setShowModal = {setShowModal} />
+        </Modal>
+      )}
+        
       </>
     );
 }
