@@ -29,7 +29,21 @@ function Complaint (
     return (
       <div class="container">
         <h5 className="col-md-4">Complainant Details-:</h5>
-        <form class="row g-3">          
+        <form class="row g-3">   
+        <div class="col-md-4">
+            <label for="autoSizingInput" class="form-label">Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="autoSizingInput"
+              placeholder="Enter your name..."
+              value={complaintdata.name ? complaintdata.name : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"name":e.target.value})
+              }}
+              // value={userData?.name}
+            />
+          </div>       
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Student ID 
@@ -45,6 +59,24 @@ function Complaint (
               }}
             />
           </div>
+          {isstudent && <div class="col-md-4">
+            <label for="autoSizingInput" class="form-label">
+              Name of Hostel
+            </label>
+            <select class="form-select" aria-label="Default select example" onChange={(e)=>{
+                setComplaintData({...complaintdata,"hostel_name":e.target.value})
+              }}
+              value={complaintdata.hostel_name ? complaintdata.hostel_name : ""} 
+              >
+                <option selected>Select Hostel Name</option>
+                <option value="1">Tagore Bhawan</option>
+                <option value="2">Patel Bhawan</option>
+                <option value="3">Silver Jubilee Bhawan</option>
+                <option value="4">Vishvesharya Bhawan</option>
+                <option value="5">Saraswati Bhawan</option>
+                <option value="6">Mandakini Bhawan</option>
+            </select>
+          </div>}
 
           <div class="col-md-4">
             <label for="inputAddress2" class="form-label">
@@ -60,6 +92,36 @@ function Complaint (
               }}
             />
           </div>
+          {isstudent && <div class="col-md-4">
+            <label for="autoSizingInput" class="form-label">
+              Room No.
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="autoSizingInput"
+              placeholder="Enter your room no."
+              value={complaintdata.room_number ? complaintdata.room_number : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"room_number":e.target.value})
+              }}
+            />
+          </div>}
+          {isstudent && <div class="col-md-4">
+            <label for="autoSizingInput" class="form-label">
+              Mobile Number
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="autoSizingInput"
+              placeholder="Enter your Mobile no."
+              value={complaintdata.mobile_number ? complaintdata.mobile_number : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"mobile_number":e.target.value})
+              }}
+            />
+          </div>}
           
           {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">

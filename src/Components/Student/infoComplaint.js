@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './styles.css';
-function Complaint (
+function InfoComplaint (
   {isstudent,setShowModal}
 ) {
    
@@ -58,21 +58,7 @@ function Complaint (
                 <option value="6">Mandakini Bhawan</option>
             </select>
           </div>}
-          {isstudent && <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
-              Wing Number
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="autoSizingInput"
-              placeholder="Enter Wing Number"
-              value={complaintdata.advisor_name ? complaintdata.advisor_name : ""} 
-              onChange={(e)=>{
-                setComplaintData({...complaintdata,"advisor_name":e.target.value})
-              }}
-            />
-          </div>}
+          
           {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Room No.
@@ -166,4 +152,4 @@ function Complaint (
     );
 }
 
-export default Complaint;
+export default InfoComplaint;

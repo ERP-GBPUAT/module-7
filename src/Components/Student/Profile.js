@@ -3,7 +3,7 @@ import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import FilterDropDown from "../../Containers/Dropdown";
-import Complaint from "./infoComplaint"
+import InfoComplaint from "./InfoComplaint"
 import Modal from "./Modal"
 
 function Profile ({isstudent}) {
@@ -82,7 +82,7 @@ function Profile ({isstudent}) {
         </table>
         {showModal && (
         <Modal onClose={closeModal}>
-          <Complaint isstudent = {isstudent} setShowModal = {setShowModal} />
+          <InfoComplaint isstudent = {isstudent} setShowModal = {setShowModal} />
         </Modal>
       )}
         
