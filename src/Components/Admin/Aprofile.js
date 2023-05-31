@@ -32,7 +32,7 @@ function Aprofile() {
             style={{ fontSize: "7rem" }}
           />
           <div className="detail">
-            <h2 className="user-name">Ashok Kumar</h2>
+            <h2 className="user-name">Govind Verma</h2>
             <h3 className="user-name">Information Technology</h3>
           </div>
           <div className="red-box">

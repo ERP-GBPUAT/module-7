@@ -14,9 +14,9 @@ function Profile () {
             style={{ fontSize: "7rem" }}
           />
           <div>
-            <h2 className="user-name">Nitin Rayal</h2>
+            <h2 className="user-name">Aman Panwar</h2>
             <h3 className="user-name">Information Technology</h3>
-            <h4 className="user-name">55102</h4>
+            <h4 className="user-name">55077</h4>
           </div>
           <div className="red-box">
             <div className="leaves">
@@ -45,25 +45,22 @@ function Profile () {
           <thead class='table-dark'>
             <tr>
               <th scope="col">S.No.</th>
-              <th scope="col">Complaint</th>
-              <th scope="col">Start date</th>
-              <th scope="col">End date</th>
+              <th scope="col">Type of Complaint</th>
+              <th scope="col">Complaint date</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Theft</td>
+              <td>Electricity</td>
               <td>18/08/2022</td>
-              <td>21/08/2022</td>
               <td>In progress</td>
             </tr>
             <tr>
               <th scope="row">2</th>
-              <td>Hostel Fight</td>
+              <td>Furniture</td>
               <td>11/05/2022</td>
-              <td>13/05/2022</td>
               <td>Completed</td>
             </tr>
           </tbody>

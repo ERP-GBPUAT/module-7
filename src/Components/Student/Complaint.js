@@ -46,34 +46,20 @@ function Complaint (
           </div>
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Department
+              Resgistration ID 
             </label>
             <input
               type="text"
               class="form-control"
               id="autoSizingInput"
-              placeholder="Enter your Department"
+              placeholder="Enter your Registration ID"
               value={complaintdata.department ? complaintdata.department : ""} 
               onChange={(e)=>{
                 setComplaintData({...complaintdata,"department":e.target.value})
               }}
             />
           </div>
-          {isstudent && <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
-              Name of Advisor
-            </label>
-            <input
-              type="text"
-              class="form-control"
-              id="autoSizingInput"
-              placeholder="Enter the name of advisor"
-              value={complaintdata.advisor_name ? complaintdata.advisor_name : ""} 
-              onChange={(e)=>{
-                setComplaintData({...complaintdata,"advisor_name":e.target.value})
-              }}
-            />
-          </div>}
+          
           {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
               Name of Hostel
@@ -91,6 +77,21 @@ function Complaint (
                 <option value="5">Saraswati Bhawan</option>
                 <option value="6">Mandakini Bhawan</option>
             </select>
+          </div>}
+          {isstudent && <div class="col-md-4">
+            <label for="autoSizingInput" class="form-label">
+              Wing Number
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              id="autoSizingInput"
+              placeholder="Enter Wing Number"
+              value={complaintdata.advisor_name ? complaintdata.advisor_name : ""} 
+              onChange={(e)=>{
+                setComplaintData({...complaintdata,"advisor_name":e.target.value})
+              }}
+            />
           </div>}
           {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
@@ -121,42 +122,46 @@ function Complaint (
               }}
             />
           </div>
-          </form>
-          <h5 className="mt-3">Complainee Details-:</h5>
-          <form class="row g-3">          
-          <div class="col-md-4">
-            <label for="inputAddress2" class="form-label">
-              Event Date
+          {isstudent && <div class="col-md-4">
+            <label for="autoSizingInput" class="form-label">
+              Mobile Number
             </label>
             <input
-              type="date"
+              type="text"
               class="form-control"
-              id="inputAddress2"
-              value={complaintdata.event_date ? complaintdata.event_date : ""} 
+              id="autoSizingInput"
+              placeholder="Enter your Mobile no."
+              value={complaintdata.mobile_number ? complaintdata.mobile_number : ""} 
               onChange={(e)=>{
-                setComplaintData({...complaintdata,"event_date":e.target.value})
+                setComplaintData({...complaintdata,"mobile_number":e.target.value})
               }}
             />
-          </div>
-  <div class="col-md-4">
+          </div>}
+          {isstudent && <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Year of Student
+              Type Of Complaint
             </label>
             <select class="form-select" aria-label="Default select example" onChange={(e)=>{
-                setComplaintData({...complaintdata,"student_year":e.target.value})
+                setComplaintData({...complaintdata,"hostel_name":e.target.value})
               }}
-              value={complaintdata.student_year ? complaintdata.student_year : ""} 
+              value={complaintdata.hostel_name ? complaintdata.hostel_name : ""} 
               >
-                <option selected>Select Year</option>
-                <option value="1">1 year</option>
-                <option value="2">2 year</option>
-                <option value="3">3 year</option>
-                <option value="4">4 year</option>
+                <option selected>Select Type of Compliant</option>
+                <option value="1">Electricity</option>
+                <option value="2">Furniture</option>
+                <option value="3">Mess</option>
+                <option value="4">Drinking Water</option>
+                <option value="5">Others</option>
             </select>
-          </div>
+          </div>}
+          
+          </form>
+          
+          <form class="row g-3">          
+  
           <div class="col-12">
             <label for="autoSizingInput" class="form-label ">
-              Incident Description
+              Explain the complaint in Breif:
             </label>
             <textarea class="form-control" id="textArea" rows="4" onChange={(e)=>{
                 setComplaintData({...complaintdata,"incident_description":e.target.value})
