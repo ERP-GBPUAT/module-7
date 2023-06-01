@@ -87,8 +87,8 @@ function Aprofile() {
       getstats();
     },[])
     return (
-      <><div className="black-box">
-      {/* <img src={"./images/user.png"} alt="logo" className="user" /> */}
+      <>
+      <div className="black-box">
       <FontAwesomeIcon
         icon={faUser}
         className="text-primary"

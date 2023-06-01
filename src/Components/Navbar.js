@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
-import Modal from './Student/Modal';
+// import Modal from './Student/Modal';
+import { Modal } from "antd";
 import Complaint from './Student/Complaint';
 import "./Navbar.css";
 // import { useNavigate } from "react-router-dom";
@@ -60,11 +61,11 @@ function Navbar({isstudent}) {
                 </li>
               </div>
               <div className="leave">
-                <FontAwesomeIcon
+                {/* {!isstudent && <FontAwesomeIcon
                   icon={faArrowRightFromBracket}
                   style={{ fontSize: "20px" }}
-                />
-                <li class="nav-item dropdown">
+                />} */}
+                {!isstudent && <li class="nav-item dropdown">
                   <a
                     class="nav-link dropdown-toggle"
                     href="#"
@@ -81,7 +82,7 @@ function Navbar({isstudent}) {
                       </button>
                     </li>
                   </ul>
-                </li>
+                </li>}
               </div>
             </ul>
             {/* <FontAwesomeIcon
@@ -102,11 +103,10 @@ function Navbar({isstudent}) {
           </div>
         </div>
       </nav>
-      {showModal && (
-        <Modal onClose={closeModal}>
-          <Complaint isstudent = {isstudent} setShowModal = {setShowModal} />
-        </Modal>
-      )}
+
+      <Modal open={showModal} width={"1000px"}  closable={true} onCancel={()=>setShowModal(false)} footer={null}>
+      <Complaint isstudent = {isstudent} setShowModal = {setShowModal} />
+      </Modal> 
     </>
   );
 }

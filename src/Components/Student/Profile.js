@@ -1,16 +1,19 @@
 import { React, useEffect, useState} from "react";
-import "./styles.css";
+// import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import FilterDropDown from "../../Containers/Dropdown";
 import InfoComplaint from "./InfoComplaint";
-import {Modal} from "antd"
+import {Modal,Button,Space} from "antd"
+import Complaint from "./Complaint";
+import { InfoCircleOutlined } from "@ant-design/icons";
 
 function Profile ({isstudent}) {
   const [showModal, setShowModal] = useState(false);
   const [complaints,setComplaints] = useState();
   const [modalData,setModalData] = useState();
   const [stats,setStats] = useState({});
+  const [complaintmodal,setcomplaintmodal] = useState(false);
   //  const navigate = useNavigate();
   //  function home(e) {
   //    navigate(`/home`);
@@ -49,7 +52,7 @@ function Profile ({isstudent}) {
     useEffect(()=>{
       getComplaints();
       getstats();
-    },[])
+    },[complaintmodal])
     const openModal = (data) => {
       setShowModal(true);
       console.log("modaldatain openmodal",data);
@@ -92,8 +95,31 @@ function Profile ({isstudent}) {
             </div>
           </div>
         </div>
+        <div style={{
+            position:"relative",
+            marginTop:"30px",
+            marginLeft:"100px",
+            marginBottom:"50px",
+        }}>
+    <Space wrap>
+    <Button type="primary"
+    onClick={()=>setcomplaintmodal(true)} 
+    size="large"
+    ss={{
+      textAlign:"center",
+      backgroundColor:"#23292F",
+      color:"white",
+      fontSize:"19px",
+      fontWeight:"500",
+  }}
+    >Raise a Complaint</Button>
+  </Space>
+        </div>
         <FilterDropDown style = {{
-          marginLeft:"20px"
+          marginLeft:"20px",
+          position:"relative",
+          top:"80px",
+          left:"20px",
         }}
         getfilteredComplaints = {getfilteredComplaints}
         />
@@ -128,8 +154,11 @@ function Profile ({isstudent}) {
         {showModal && (
           <InfoComplaint isstudent = {isstudent} setShowInfoModal = {setShowModal} modalData = {modalData} showinfomodal = {showModal}/>
       )}
+      <Modal open={complaintmodal} width={"1000px"}  closable={true} onCancel={()=>setcomplaintmodal(false)} footer={null}>
+      <Complaint isstudent = {isstudent} setShowModal = {setcomplaintmodal} />
+      </Modal> 
       </>
-    );
+    );  
 }
 
 export default Profile;

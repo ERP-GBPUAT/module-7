@@ -14,7 +14,7 @@ function App() {
            <Route path='/student' element={
            <>
            <Navbar isstudent={true}/>
-           <Profile />
+           <Profile isstudent={true}/>
            </>} />
            <Route path='/admin' element={<>
             <Navbar isstudent={false}/>

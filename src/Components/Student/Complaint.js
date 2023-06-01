@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './styles.css';
+import { Input } from "antd";
 function Complaint (
   {isstudent,setShowModal}
 ) {
@@ -18,11 +19,14 @@ function Complaint (
       })
     }
     return (
-      <div class="container">
-        <h5 className="col-md-4">Complainant Details-:</h5>
+      <div class="container" >
+        <h4 className="col-md-4">Complainant Details-:</h4>
+        <br/>
         <form class="row g-3">   
         <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">Name</label>
+            <label for="autoSizingInput" class="form-label" style={{
+              fontSize:"16px"
+            }}>Name</label>
             <input
               type="text"
               class="form-control"
@@ -36,7 +40,9 @@ function Complaint (
             />
           </div>       
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <label for="autoSizingInput" class="form-label" style={{
+              fontSize:"16px"
+            }}>
               Student ID 
             </label>
             <input
@@ -51,7 +57,9 @@ function Complaint (
             />
           </div>
           {isstudent && <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <label for="autoSizingInput" class="form-label" style={{
+              fontSize:"16px"
+            }}>
               Name of Hostel
             </label>
             <select class="form-select" aria-label="Default select example" onChange={(e)=>{
@@ -70,7 +78,9 @@ function Complaint (
           </div>}
 
           <div class="col-md-4">
-            <label for="inputAddress2" class="form-label">
+            <label for="inputAddress2" class="form-label" style={{
+              fontSize:"16px"
+            }}>
               Registration date
             </label>
             <input
@@ -84,7 +94,9 @@ function Complaint (
             />
           </div>
           {isstudent && <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <label for="autoSizingInput" class="form-label" style={{
+              fontSize:"16px"
+            }}>
               Room No.
             </label>
             <input
@@ -99,7 +111,9 @@ function Complaint (
             />
           </div>}
           {isstudent && <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <label for="autoSizingInput" class="form-label" style={{
+              fontSize:"16px"
+            }}>
               Mobile Number
             </label>
             <input
@@ -115,15 +129,17 @@ function Complaint (
           </div>}
           
           {isstudent && <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <label for="autoSizingInput" class="form-label" style={{
+              fontSize:"16px"
+            }}>
               Type Of Complaint
             </label>
             <select class="form-select" aria-label="Default select example" onChange={(e)=>{
                 setComplaintData({...complaintdata,"type_of_complaint":e.target.value})
               }}
-              value={complaintdata.hostel_name ? complaintdata.hostel_name : ""} 
+              value={complaintdata.type_of_complaint ? complaintdata.type_of_complaint : ""} 
               >
-                <option selected>Select Type of Compliant</option>
+                <option selected>Select Type of Compliant</option>  
                 <option value="electricity">Electricity</option>
                 <option value="Furniture">Furniture</option>
                 <option value="Mess">Mess</option>
@@ -137,8 +153,10 @@ function Complaint (
           <form class="row g-3 bottom">          
   
           <div class="col-16">
-            <label for="autoSizingInput" class="form-label ">
-              Explain the complaint in Breif:
+            <label for="autoSizingInput" class="form-label " style={{
+              fontSize:"16px"
+            }}>
+              Explain the complaint in brief :
             </label>
             <textarea class="form-control" id="textArea" rows="4" onChange={(e)=>{
                 setComplaintData({...complaintdata,"description":e.target.value})
