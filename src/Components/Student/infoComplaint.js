@@ -125,7 +125,7 @@ const InfoComplaint = ({
         
       </div>
       <p className='leftinfo'>Complaint in Breif:</p>
-      <p>no Electicity alsdjf adsf aslfa sdfl asdjfk  aksjdfa sdflkjasd lf</p>
+      <p>no Electicity alsdjf adsf </p>
 
       </Modal>
     </>
