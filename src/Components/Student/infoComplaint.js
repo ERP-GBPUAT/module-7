@@ -13,60 +13,75 @@ function InfoComplaint (
         <form class="row g-3">  
              
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">Name:</h5>
+            <h6 for="autoSizingInput" class="form-label">Name:</h6>
+            <div className="col-md-6 info"><label></label></div>
+            
             
           </div>
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Registration ID: {modalData.studentid ? modalData.studentid : ""}
-            </h5>
+            <h6 for="autoSizingInput" class="form-label">
+              Registration ID: 
+            </h6>
+            <div class="col-md-6 info">
+            <label>
+              {modalData.studentid ? modalData.studentid : ""}
+              </label>
+            </div>
             
           </div>
           
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Name of Hostel:{modalData.hostel_name}
-            </h5>
+            <h6 for="autoSizingInput" class="form-label">
+              Name of Hostel:
+            </h6>
+            <div className="col-md-6 info">
+            <label>{modalData.hostel_name}</label>
+            </div>
             
           </div>
-          
-          
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Room No.: {modalData.room}
-            </h5>
-            
+            <h6 for="autoSizingInput" class="form-label">
+              Room No.: 
+            </h6>
+            <div class="md-col-6 info">
+            <label>{modalData.room}</label>
+            </div>
           </div>
 
           <div class="col-md-4">
-            <h5 for="inputAddress2" class="form-label">
-              Registration date: {modalData.reg_date}
-            </h5>
-            
+            <h6 for="inputAddress2" class="form-label">
+              Registration date: 
+            </h6>
+            <div class="col-md-6 info">
+            <label>{modalData.reg_date}</label>
+            </div>
           </div>
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Mobile Number: {modalData.phone}
-            </h5>
-            
+            <h6 for="autoSizingInput" class="form-label">
+              Mobile Number: 
+            </h6>
+            <div class="col-md-6 info">
+            <label>{modalData.phone}</label>
+            </div>
           </div>
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Type Of Complaint: {modalData.type_of_complaint}
-            </h5>
-           
+            <h6 for="autoSizingInput" class="form-label">
+              Type Of Complaint: 
+            </h6>
+            <div class="md-col-6 info">
+            <label>{modalData.type_of_complaint}</label>
+            </div>
+          </div>
+          <div class="col-12">
+            <h6 for="autoSizingInput" class="form-label ">
+              Complaint in Breif: 
+            </h6>
+            <div class="col-md-6 info">
+            <label>{modalData.description}</label>
+            </div>
           </div>
           
           </form>
-          
-                 
-  
-          <div class="col-12 bottom">
-            <h5 for="autoSizingInput" class="form-label ">
-              Complaint in Breif: {modalData.description}
-            </h5>
-            
-          </div>
           
           
       </div>

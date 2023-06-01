@@ -118,6 +118,11 @@ function Profile ({isstudent}) {
                </tr>
               }))
             }
+            {/* <th scope="col">S.No.</th>
+              <th scope="col" onClick={openModal}>Type of Complaint</th>
+              <th scope="col">Complaint date</th>
+              <th scope="col">Status</th> */}
+
           </tbody>
         </table>
         {showModal && (
