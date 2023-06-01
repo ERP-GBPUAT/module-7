@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './styles.css';
 function InfoComplaint (
-  {isstudent,setShowModal}
+  {isstudent,setShowModal,modalData}
 ) {
    
     const [complaintdata , setComplaintData] = useState({});
+    console.log("modaldata",modalData);
     return (
       <div class="container">
         <h2 className="topbox">Complainant Details-:</h2>
@@ -16,43 +17,43 @@ function InfoComplaint (
             
           </div>
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Registration ID:
-            </h5>
+            <label for="autoSizingInput" class="form-label">
+              Registration ID: {modalData.studentid ? modalData.studentid : ""}
+            </label>
             
           </div>
           
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Name of Hostel:
-            </h5>
+            <label for="autoSizingInput" class="form-label">
+              Name of Hostel:{modalData.hostel_name}
+            </label>
             
           </div>
           
           
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Room No.:
-            </h5>
+            <label for="autoSizingInput" class="form-label">
+              Room No.: {modalData.room}
+            </label>
             
           </div>
 
           <div class="col-md-4">
-            <h5 for="inputAddress2" class="form-label">
-              Registration date:
-            </h5>
+            <label for="inputAddress2" class="form-label">
+              Registration date: {modalData.reg_date}
+            </label>
             
           </div>
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Mobile Number:
-            </h5>
+            <label for="autoSizingInput" class="form-label">
+              Mobile Number: {modalData.phone}
+            </label>
             
           </div>
           <div class="col-md-4">
-            <h5 for="autoSizingInput" class="form-label">
-              Type Of Complaint:
-            </h5>
+            <label for="autoSizingInput" class="form-label">
+              Type Of Complaint: {modalData.type_of_complaint}
+            </label>
            
           </div>
           
@@ -61,9 +62,9 @@ function InfoComplaint (
                  
   
           <div class="col-12 bottom">
-            <h5 for="autoSizingInput" class="form-label ">
-              Complaint in Breif:
-            </h5>
+            <label for="autoSizingInput" class="form-label ">
+              Complaint in Breif: {modalData.description}
+            </label>
             
           </div>
           

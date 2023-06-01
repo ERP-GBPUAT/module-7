@@ -4,28 +4,19 @@ import './styles.css';
 function Complaint (
   {isstudent,setShowModal}
 ) {
-    // const [userData,setUSerData] = useState(JSON.parse(localStorage.getItem("user")))
-    // const [complaint,setComplaint]=useState({date:"",studentID:"",desc:""})
-
-    // const onComplaintSubmit = async(e)=>{
-    //   e.preventDefault();
-
-    //    try {
-    //     const res = await fetch('http://localhost:8080/complaint/add/:',{
-    //     method:"POST",
-    //     header:{
-    //       "Content-type":"application/json",
-    //       "token":localStorage.getItem('token'),
-    //     },
-    //     body:JSON.stringify({"complainee":complaint.studentId,"complainant":user?.id,"description":complaint.desc})
-    //   })
-    //   const data = await res.json();
-    //   console.log(data);
-    //   } catch (error) {
-    //     console.log(error);
-    //   }
-    // }
     const [complaintdata , setComplaintData] = useState({});
+    const submitData = async()=>{
+      console.log("comlpaintdata",complaintdata);
+      await fetch("http://localhost:8080/hostelcomplaint/submit_complaint_hostel",{
+        method:"POST",
+        headers :{
+          "Content-Type":"application/json"
+        },
+        body : JSON.stringify(complaintdata),
+      }).then((res)=>res.json()).then((data)=>{
+        console.log("submit complinnttt",data);
+      })
+    }
     return (
       <div class="container">
         <h5 className="col-md-4">Complainant Details-:</h5>
@@ -49,13 +40,13 @@ function Complaint (
               Student ID 
             </label>
             <input
-              type="text"
+              type="number"
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter your Registration ID"
-              value={complaintdata.department ? complaintdata.department : ""} 
+              value={complaintdata.studentid ? complaintdata.studentid : ""} 
               onChange={(e)=>{
-                setComplaintData({...complaintdata,"department":e.target.value})
+                setComplaintData({...complaintdata,"studentid":e.target.value})
               }}
             />
           </div>
@@ -101,9 +92,9 @@ function Complaint (
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter your room no."
-              value={complaintdata.room_number ? complaintdata.room_number : ""} 
+              value={complaintdata.room ? complaintdata.room : ""} 
               onChange={(e)=>{
-                setComplaintData({...complaintdata,"room_number":e.target.value})
+                setComplaintData({...complaintdata,"room":e.target.value})
               }}
             />
           </div>}
@@ -116,9 +107,9 @@ function Complaint (
               class="form-control"
               id="autoSizingInput"
               placeholder="Enter your Mobile no."
-              value={complaintdata.mobile_number ? complaintdata.mobile_number : ""} 
+              value={complaintdata.phone? complaintdata.phone : ""} 
               onChange={(e)=>{
-                setComplaintData({...complaintdata,"mobile_number":e.target.value})
+                setComplaintData({...complaintdata,"phone":e.target.value})
               }}
             />
           </div>}
@@ -128,16 +119,16 @@ function Complaint (
               Type Of Complaint
             </label>
             <select class="form-select" aria-label="Default select example" onChange={(e)=>{
-                setComplaintData({...complaintdata,"hostel_name":e.target.value})
+                setComplaintData({...complaintdata,"type_of_complaint":e.target.value})
               }}
               value={complaintdata.hostel_name ? complaintdata.hostel_name : ""} 
               >
                 <option selected>Select Type of Compliant</option>
-                <option value="1">Electricity</option>
-                <option value="2">Furniture</option>
-                <option value="3">Mess</option>
-                <option value="4">Drinking Water</option>
-                <option value="5">Others</option>
+                <option value="electricity">Electricity</option>
+                <option value="Furniture">Furniture</option>
+                <option value="Mess">Mess</option>
+                <option value="Drinking Water">Drinking Water</option>
+                <option value="Others">Others</option>
             </select>
           </div>}
           
@@ -150,9 +141,9 @@ function Complaint (
               Explain the complaint in Breif:
             </label>
             <textarea class="form-control" id="textArea" rows="4" onChange={(e)=>{
-                setComplaintData({...complaintdata,"incident_description":e.target.value})
+                setComplaintData({...complaintdata,"description":e.target.value})
               }}
-              value={complaintdata.incident_description ? complaintdata.incident_description : ""} 
+              value={complaintdata.description ? complaintdata.description : ""} 
               ></textarea>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end col-12">
@@ -162,6 +153,7 @@ function Complaint (
               Reset
             </button>
             <button type="submit" class="btn btn-danger" onClick={()=>{
+              submitData();
               setShowModal(false);
             }}>
               Register
