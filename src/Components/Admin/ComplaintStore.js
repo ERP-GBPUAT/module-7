@@ -28,7 +28,7 @@ function ComplaintStore({
             </tr>
           </thead>
           <tbody>
-            {
+            {/* {
               complaints && (complaints.map((curr,count)=>{
                 return <tr>
                 <th scope="row">{count+1}</th>
@@ -50,7 +50,18 @@ function ComplaintStore({
                 </></tf>
                </tr>
               }))
-            }
+            } */}
+            
+              <td scope="col" onClick={()=>{
+                  setinfodata(true);
+                  setShowInfoModal(true);
+                }}>S.No.</td>
+              <th scope="col">Type of Complaint</th>
+              <th scope="col">Complaint date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            
+
           </tbody>
         </table>
         {/* <InfoComplaint 
