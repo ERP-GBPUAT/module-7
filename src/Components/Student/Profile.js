@@ -73,9 +73,9 @@ function Profile ({isstudent}) {
             <h3 className="user-name">Information Technology</h3>
             <h4 className="user-name">55077</h4>
           </div>
-          <div className="red-box">
+          <div className="green-box">
             <div className="leaves">
-              <h4>Approved Complaint</h4>
+              <h4>Approved Complaint(s)</h4>
               <h4>{ stats.approved_count }</h4>
             </div>
           </div>
@@ -85,7 +85,7 @@ function Profile ({isstudent}) {
               <h4>{stats.pending_count}</h4>
             </div>
           </div>
-          <div className="green-box">
+          <div className="red-box">
             <div className="leaves">
               <h4>Complaint(s) closed</h4>
               <h4>{stats.rej_count}</h4>  
@@ -108,7 +108,7 @@ function Profile ({isstudent}) {
             </tr>
           </thead>
           <tbody>
-            {/* {
+            {
               complaints && (complaints.map((curr,count)=>{
                 return <tr>
                 <th scope="row">{count+1}</th>
@@ -117,11 +117,11 @@ function Profile ({isstudent}) {
                 <td>{curr.status}</td>
                </tr>
               }))
-            } */}
-            <th scope="col">S.No.</th>
+            }
+            {/* <th scope="col">S.No.</th>
               <th scope="col" onClick={openModal}>Type of Complaint</th>
               <th scope="col">Complaint date</th>
-              <th scope="col">Status</th>
+              <th scope="col">Status</th> */}
 
           </tbody>
         </table>
