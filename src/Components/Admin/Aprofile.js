@@ -7,8 +7,48 @@ import PunishmentModal from '../../Containers/PunishmentModal';
 function Aprofile() { 
     const [complaints,setComplaints] = useState();
     const [showpunishmentmodal,setShowPunishmentModal] = useState(false);
-    const [stats,setStats] = useState({})
+    const [stats,setStats] = useState({});
+    
+    const approvecomplaint = async(complaint_id)=>{
+      await fetch("http://localhost:8080/hostelcomplaint/approve_complaint_hostel",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          complaint_id:complaint_id
+        })
+      }).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+      })
+    }
 
+    const rejectcomplaint = async(complaint_id) =>{
+      await fetch("http://localhost:8080/hostelcomplaint/reject_complaint",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          complaint_id:complaint_id
+        })
+      }).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+      })
+    }
+    const forward_complaint = async(complaint_id)=>{
+      await fetch("http://localhost:8080/hostelcomplaint/forward_complaint",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+          complaint_id:complaint_id
+        })
+      }).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+      })
+    }
     const getstats = async()=>{
       await fetch("http://localhost:8080/hostelcomplaint/get_stats_hostel",{
         headers : {
@@ -59,19 +99,19 @@ function Aprofile() {
           <div className="red-box">
             <div className="leaves">
               <h6>Pending Complaint(s)</h6>
-              <h6>15</h6>
+              <h6>{stats.pending_count}</h6>
             </div>
           </div>
           <div className="blue-box">
             <div className="leaves">
               <h6>Approved Complaint(s)</h6>
-              <h6>8</h6>
+              <h6>{stats.approved_count}</h6>
             </div>
           </div>
           <div className="green-box">
             <div className="leaves">
               <h6>Rejected Complaint(s)</h6>
-              <h6>7</h6>
+              <h6>{stats.rej_count}</h6>
             </div>
           </div>
         </div>
