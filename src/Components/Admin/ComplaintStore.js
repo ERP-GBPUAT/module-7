@@ -3,6 +3,7 @@ import ActionDropdown from "./ActionDropdown";
 import { useState } from "react";
 import { Modal } from 'antd';
 import { faL } from "@fortawesome/free-solid-svg-icons";
+import InfoComplaint from "../Student/InfoComplaint";
 function ComplaintStore({
   setpunishmentcomplaintid,
   punishmentcomplaintid,
@@ -53,17 +54,11 @@ function ComplaintStore({
             }
           </tbody>
         </table>
-        {/* <InfoComplaint 
+        <InfoComplaint 
         showinfomodal = {showinfomodal}
         setShowInfoModal = {setShowInfoModal}
-        infodata = {infodata}
-        /> */}
-
-      <Modal title="Basic Modal" open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
+        modalData = {infodata}
+        />
     </>
   );
 }

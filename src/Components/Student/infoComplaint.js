@@ -96,11 +96,16 @@ import { useState } from 'react';
 const InfoComplaint = ({
   infodata,
   setShowInfoModal,
-  showinfomodal
+  showinfomodal,
+  modalData
 }) => {
   return (
     <>
-      
+      <Modal title="Basic Modal" open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </>
   );
 };

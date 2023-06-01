@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import FilterDropDown from "../../Containers/Dropdown";
 import InfoComplaint from "./InfoComplaint";
-import Modal from "./Modal"
+import {Modal} from "antd"
 
 function Profile ({isstudent}) {
   const [showModal, setShowModal] = useState(false);
@@ -126,11 +126,8 @@ function Profile ({isstudent}) {
           </tbody>
         </table>
         {showModal && (
-        <Modal onClose={closeModal}>
-          <InfoComplaint isstudent = {isstudent} setShowModal = {setShowModal} modalData = {modalData}/>
-        </Modal>
+          <InfoComplaint isstudent = {isstudent} setShowInfoModal = {setShowModal} modalData = {modalData} showinfomodal = {showModal}/>
       )}
-        
       </>
     );
 }
