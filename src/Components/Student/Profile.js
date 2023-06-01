@@ -135,7 +135,7 @@ function Profile ({isstudent}) {
             </tr>
           </thead>
           <tbody>
-            {/* {
+            {
               complaints && (complaints.map((curr,count)=>{
                 return <tr>
                 <th scope="row">{count+1}</th>
@@ -144,11 +144,11 @@ function Profile ({isstudent}) {
                 <td>{curr.status}</td>
                </tr>
               }))
-            } */}
-            <th scope="col">S.No.</th>
+            }
+            {/* <th scope="col">S.No.</th>
               <th scope="col" onClick={openModal}>Type of Complaint</th>
               <th scope="col">Complaint date</th>
-              <th scope="col">Status</th>
+              <th scope="col">Status</th> */}
 
           </tbody>
         </table>
