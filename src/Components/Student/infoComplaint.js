@@ -82,29 +82,50 @@
 //           </div>
           
 //           </form>
-          
-          
 //       </div>
 //     );
 // }
 
-// export default InfoComplaint;
+// // export default InfoComplaint;
 
-
+import './styles.css';
 import { Button, Modal } from 'antd';
 import { useState } from 'react';
 const InfoComplaint = ({
-  infodata,
   setShowInfoModal,
   showinfomodal,
   modalData
 }) => {
   return (
     <>
-      <Modal title="Basic Modal" open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} className="info top-box" width={1000} >
+      <h4 className="topbox">Complainant Details-:</h4>
+      <div className='infobox'>
+        <div className='leftinfo'>
+          <p>Name :</p>
+          <p>Registration ID :</p>
+          <p>Name of Hostel :</p>
+          <p>Room Number :</p>
+          <p>Registration Date :</p>
+          <p>Moblie Number :</p>
+          <p>Type of Complaint:</p>
+          
+        </div>
+        <div>
+          <p>{modalData.name}</p>
+          <p>{modalData.studentid}</p>
+          <p>{modalData.hostel_name}</p>
+          <p>{modalData.room}</p>
+          <p>{modalData.reg_date}</p>
+          <p>{modalData.phone}</p>
+          <p>{modalData.type_of_complaint}</p>
+          
+        </div>
+        
+      </div>
+      <p className='leftinfo'>Complaint in Breif:</p>
+      <p>{modalData.description}</p>
+
       </Modal>
     </>
   );

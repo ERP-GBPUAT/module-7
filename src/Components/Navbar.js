@@ -92,10 +92,14 @@ function Navbar({isstudent}) {
               /> */}
             <form class="d-flex" role="search">
               <button class="btn" type="submit" className="logout">
-                <FontAwesomeIcon
+                {/* <FontAwesomeIcon
                   icon={faPowerOff}
                   className="text-black"
                   style={{ fontSize: "20px", marginRight: "8px" }}
+                /> */}
+                <FontAwesomeIcon
+                  icon={faArrowRightFromBracket}
+                  style={{ fontSize: "20px", marginRight:"8px" }}
                 />
                 Logout
               </button>

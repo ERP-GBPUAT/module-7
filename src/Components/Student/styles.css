@@ -86,10 +86,11 @@
 .topbox{
     padding-bottom: 30px;
 }
-.info{
-    background-color:white;
-    margin-right: 70px;
-    margin-bottom: 5px;
-    padding: 5px;
+.infobox{
+    display: flex;
+    justify-content: space-between;
 
+}
+.leftinfo{
+    font-weight: bold;
 }

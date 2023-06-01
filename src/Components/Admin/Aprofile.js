@@ -98,7 +98,7 @@ function Aprofile() {
         <h2 className="user-name">Govind Verma</h2>
         <h3 className="user-name">Information Technology</h3>
       </div>
-      <div className="red-box">
+      <div className="green-box">
         <div className="leaves">
           <h6>Pending Complaint(s)</h6>
           <h6>{stats.pending_count}</h6>
@@ -110,7 +110,7 @@ function Aprofile() {
           <h6>{stats.approved_count}</h6>
         </div>
       </div>
-      <div className="green-box">
+      <div className="red-box">
         <div className="leaves">
           <h6>Rejected Complaint(s)</h6>
           <h6>{stats.rej_count}</h6>

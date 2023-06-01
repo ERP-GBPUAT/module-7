@@ -1,5 +1,5 @@
 import { React, useEffect, useState} from "react";
-// import "./styles.css";
+import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import FilterDropDown from "../../Containers/Dropdown";
@@ -54,9 +54,8 @@ function Profile ({isstudent}) {
       getstats();
     },[complaintmodal])
     const openModal = (data) => {
-      setShowModal(true);
-      console.log("modaldatain openmodal",data);
       setModalData(data);
+      setShowModal(true);
     };
     const closeModal = () => {
       setShowModal(false);
@@ -76,9 +75,9 @@ function Profile ({isstudent}) {
             <h3 className="user-name">Information Technology</h3>
             <h4 className="user-name">55077</h4>
           </div>
-          <div className="red-box">
+          <div className="green-box">
             <div className="leaves">
-              <h4>Approved Complaint</h4>
+              <h4>Approved Complaint(s)</h4>
               <h4>{ stats.approved_count }</h4>
             </div>
           </div>
@@ -88,7 +87,7 @@ function Profile ({isstudent}) {
               <h4>{stats.pending_count}</h4>
             </div>
           </div>
-          <div className="green-box">
+          <div className="red-box">
             <div className="leaves">
               <h4>Complaint(s) closed</h4>
               <h4>{stats.rej_count}</h4>  
@@ -123,7 +122,9 @@ function Profile ({isstudent}) {
         }}
         getfilteredComplaints = {getfilteredComplaints}
         />
-        <table class="table table-bordered caption-top">
+        <table class="table table-bordered caption-top" style={{
+          marginBottom:"50px"
+        }}>
         <caption>List of Complaint(s)</caption>
           <thead class='table-dark'>
             <tr>
@@ -138,7 +139,7 @@ function Profile ({isstudent}) {
               complaints && (complaints.map((curr,count)=>{
                 return <tr>
                 <th scope="row">{count+1}</th>
-                <td onClick={()=>openModal(curr)}>{curr.type_of_complaint}</td>
+                <a onClick={()=>openModal(curr)}>{curr.type_of_complaint}</a>
                 <td>{curr.reg_date}</td>
                 <td>{curr.status}</td>
                </tr>
@@ -152,7 +153,7 @@ function Profile ({isstudent}) {
           </tbody>
         </table>
         {showModal && (
-          <InfoComplaint isstudent = {isstudent} setShowInfoModal = {setShowModal} modalData = {modalData} showinfomodal = {showModal}/>
+          <InfoComplaint isstudent = {isstudent} setShowInfoModal = {setShowModal} modalData = {modalData} showinfomodal={showModal}/>
       )}
       <Modal open={complaintmodal} width={"1000px"}  closable={true} onCancel={()=>setcomplaintmodal(false)} footer={null}>
       <Complaint isstudent = {isstudent} setShowModal = {setcomplaintmodal} />

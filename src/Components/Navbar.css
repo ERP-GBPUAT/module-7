@@ -28,8 +28,9 @@ nav ul{
 
 nav .logout{
 border: 1px solid transparent ;
-background-color: red;
 border-radius: 10px;
+background-color: #e3f2fd;
+color: darkgrey;
  /* box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6); */
  font-size: 18px;
  font-weight: 500;
