@@ -9,49 +9,51 @@ function InfoComplaint (
     console.log("modaldata",modalData);
     return (
       <div class="container">
-        <h5 className="col-md-4">Complainant Details-:</h5>
-        <form class="row g-3">          
+        <h2 className="topbox">Complainant Details-:</h2>
+        <form class="row g-3">  
+             
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">Name:</label>
+            <h5 for="autoSizingInput" class="form-label">Name:</h5>
             
           </div>
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <h5 for="autoSizingInput" class="form-label">
               Registration ID: {modalData.studentid ? modalData.studentid : ""}
-            </label>
+            </h5>
             
           </div>
           
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <h5 for="autoSizingInput" class="form-label">
               Name of Hostel:{modalData.hostel_name}
-            </label>
+            </h5>
             
           </div>
           
+          
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <h5 for="autoSizingInput" class="form-label">
               Room No.: {modalData.room}
-            </label>
+            </h5>
             
           </div>
 
           <div class="col-md-4">
-            <label for="inputAddress2" class="form-label">
+            <h5 for="inputAddress2" class="form-label">
               Registration date: {modalData.reg_date}
-            </label>
+            </h5>
             
           </div>
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <h5 for="autoSizingInput" class="form-label">
               Mobile Number: {modalData.phone}
-            </label>
+            </h5>
             
           </div>
           <div class="col-md-4">
-            <label for="autoSizingInput" class="form-label">
+            <h5 for="autoSizingInput" class="form-label">
               Type Of Complaint: {modalData.type_of_complaint}
-            </label>
+            </h5>
            
           </div>
           
@@ -60,9 +62,9 @@ function InfoComplaint (
                  
   
           <div class="col-12 bottom">
-            <label for="autoSizingInput" class="form-label ">
+            <h5 for="autoSizingInput" class="form-label ">
               Complaint in Breif: {modalData.description}
-            </label>
+            </h5>
             
           </div>
           
