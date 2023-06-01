@@ -1,15 +1,21 @@
 import "./ComplaintStore.css";
 import ActionDropdown from "./ActionDropdown";
-import { Button } from "antd";
+import { useState } from "react";
+import { Modal } from 'antd';
+import { faL } from "@fortawesome/free-solid-svg-icons";
 function ComplaintStore({
   setpunishmentcomplaintid,
   punishmentcomplaintid,
-  setShowPunishmentModal,complaints,openModal,
+  setShowPunishmentModal,complaints,
   forward_complaint,
   approvecomplaint,
   rejectcomplaint
 }) {
+
+  const [showinfomodal,setShowInfoModal] = useState(false);
+  const [infodata,setinfodata] = useState({});
   return (
+    <>
     <table class="table table-bordered caption-top">
         <caption>List of Complaint(s)</caption>
           <thead class='table-dark'>
@@ -26,7 +32,10 @@ function ComplaintStore({
               complaints && (complaints.map((curr,count)=>{
                 return <tr>
                 <th scope="row">{count+1}</th>
-                <td onClick={()=>openModal(curr)}>{curr.type_of_complaint}</td>
+                <td onClick={()=>{
+                  setinfodata(curr);
+                  setShowInfoModal(true);
+                }}>{curr.type_of_complaint}</td>
                 <td>{curr.reg_date}</td>
                 <td>{curr.status}</td>
                 <tf><>
@@ -44,6 +53,18 @@ function ComplaintStore({
             }
           </tbody>
         </table>
+        {/* <InfoComplaint 
+        showinfomodal = {showinfomodal}
+        setShowInfoModal = {setShowInfoModal}
+        infodata = {infodata}
+        /> */}
+
+      <Modal title="Basic Modal" open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
+    </>
   );
 }
 

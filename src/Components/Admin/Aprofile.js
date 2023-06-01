@@ -4,7 +4,6 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import ComplaintStore from './ComplaintStore';
 import FilterDropDown from '../../Containers/Dropdown';
 import PunishmentModal from '../../Containers/PunishmentModal';
-import InfoComplaint from '../Student/InfoComplaint';
 function Aprofile() { 
     const [complaints,setComplaints] = useState();
     const [showpunishmentmodal,setShowPunishmentModal] = useState(false);
