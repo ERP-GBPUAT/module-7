@@ -1,27 +1,48 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import ComplaintStore from './ComplaintStore';
 import FilterDropDown from '../../Containers/Dropdown';
 import PunishmentModal from '../../Containers/PunishmentModal';
 function Aprofile() { 
-    const [complaints,setComplaints] = useState([]);
+    const [complaints,setComplaints] = useState();
     const [showpunishmentmodal,setShowPunishmentModal] = useState(false);
-    const fetchAllComplaints = async()=>{
-      try {
-        const res = await fetch('http://localhost:8080/?/getByLevel/:',{
-        method:"GET",
-        header:{
-          "Content-type":"application/json",
-          "token":localStorage.getItem('token'),
+    const [stats,setStats] = useState({})
+
+    const getstats = async()=>{
+      await fetch("http://localhost:8080/hostelcomplaint/get_stats_hostel",{
+        headers : {
+          "Content-Type":"application/json",
         }
+      }).then((res)=>res.json()).then((data)=>{
+        setStats(JSON.parse(data.data));
       })
-      const data = await res.json();
-      setComplaints(data);
-      } catch (error) {
-        console.log(error);
-      }
     }
+    const getfilteredComplaints = async(status)=>{
+      await fetch(`http://localhost:8080/hostelcomplaint/get_filtered_complaints_hostel?status=${status}`,{
+        method:"GET",
+        headers : {
+          "Content-Type":"application/json",
+        }
+      }).then((res)=>res.json()).then((data)=>{
+        setComplaints(data.data);
+      })
+    }
+    const getComplaints = async()=>{
+      await fetch("http://localhost:8080/hostelcomplaint/get_all_complaints_hostel",{
+        method:"GET",
+        headers : {
+          "Content-Type":"application/json",
+        }
+      }).then((res)=>res.json()).then((data)=>{
+        console.log(data);
+        setComplaints(data.data);
+      })
+    }
+    useEffect(()=>{
+      getComplaints();
+      getstats();
+    },[])
     return (
       <>
         <div className="black-box">

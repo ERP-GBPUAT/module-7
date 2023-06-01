@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './styles.css';
 function InfoComplaint (
-  {isstudent,setShowModal}
+  {isstudent,setShowModal,modalData}
 ) {
    
     const [complaintdata , setComplaintData] = useState({});
+    console.log("modaldata",modalData);
     return (
       <div class="container">
         <h5 className="col-md-4">Complainant Details-:</h5>
@@ -16,40 +17,40 @@ function InfoComplaint (
           </div>
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Registration ID:
+              Registration ID: {modalData.studentid ? modalData.studentid : ""}
             </label>
             
           </div>
           
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Name of Hostel:
+              Name of Hostel:{modalData.hostel_name}
             </label>
             
           </div>
           
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Room No.:
+              Room No.: {modalData.room}
             </label>
             
           </div>
 
           <div class="col-md-4">
             <label for="inputAddress2" class="form-label">
-              Registration date:
+              Registration date: {modalData.reg_date}
             </label>
             
           </div>
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Mobile Number:
+              Mobile Number: {modalData.phone}
             </label>
             
           </div>
           <div class="col-md-4">
             <label for="autoSizingInput" class="form-label">
-              Type Of Complaint:
+              Type Of Complaint: {modalData.type_of_complaint}
             </label>
            
           </div>
@@ -60,7 +61,7 @@ function InfoComplaint (
   
           <div class="col-12 bottom">
             <label for="autoSizingInput" class="form-label ">
-              Complaint in Breif:
+              Complaint in Breif: {modalData.description}
             </label>
             
           </div>
