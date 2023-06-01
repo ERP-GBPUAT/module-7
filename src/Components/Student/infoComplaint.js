@@ -92,41 +92,43 @@ import './styles.css';
 import { Button, Modal } from 'antd';
 import { useState } from 'react';
 const InfoComplaint = ({
-  infodata,
   setShowInfoModal,
   showinfomodal,
   modalData
 }) => {
   return (
     <>
-      <Modal open={true} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} className="info top-box" >
-      <h4 className="topbox">Complainant Details-:</h4>
-      <div className='infobox'>
-        <div className='leftinfo'>
-          <p>Name :</p>
-          <p>Registration ID :</p>
-          <p>Name of Hostel :</p>
-          <p>Room Number :</p>
-          <p>Registration Date :</p>
-          <p>Moblie Number :</p>
-          <p>Type of Complaint:</p>
-          
+      <Modal open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} className="info top-box" width={1000} >
+      <div style={{ padding:"19px"}}>
+        <div className='header'>
+        <h4 className="topbox">Complainant Details-:</h4>
         </div>
-        <div>
-          <p>dhruv</p>
-          <p>55092</p>
-          <p>VS</p>
-          <p>130</p>
-          <p>12-05-2023</p>
-          <p>857293744</p>
-          <p>Electricity</p>
+        <div className='infobox'>
+          <div className='leftinfo'>
+            <p>Name :</p>
+            <p>Registration ID :</p>
+            <p>Name of Hostel :</p>
+            <p>Room Number :</p>
+            <p>Registration Date :</p>
+            <p>Moblie Number :</p>
+            <p>Type of Complaint:</p>
+            <p>Complaint in Breif:</p>
+            
+          </div>
+          <div className='inforight col-md-3'>
+            <p>{modalData.name}Dhruv</p>
+            <p>{modalData.studentid}55092</p>
+            <p>{modalData.hostel_name}VS</p>
+            <p>{modalData.room}130</p>
+            <p>{modalData.reg_date}123</p>
+            <p>{modalData.phone}123</p>
+            <p>{modalData.type_of_complaint}elec</p>
+            <p>{modalData.description}laksdjfalkj</p>
+            
+          </div>
           
+          </div>
         </div>
-        
-      </div>
-      <p className='leftinfo'>Complaint in Breif:</p>
-      <p>no Electicity alsdjf adsf </p>
-
       </Modal>
     </>
   );

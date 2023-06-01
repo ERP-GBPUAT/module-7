@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Modal } from 'antd';
 import { faL } from "@fortawesome/free-solid-svg-icons";
 import InfoComplaint from "../Student/InfoComplaint";
+import { InfoCircleOutlined } from "@ant-design/icons";
 function ComplaintStore({
   setpunishmentcomplaintid,
   punishmentcomplaintid,
@@ -33,10 +34,7 @@ function ComplaintStore({
               complaints && (complaints.map((curr,count)=>{
                 return <tr>
                 <th scope="row">{count+1}</th>
-                <td onClick={()=>{
-                  setinfodata(curr);
-                  setShowInfoModal(true);
-                }}>{curr.type_of_complaint}</td>
+                <td >{curr.type_of_complaint}</td>
                 <td>{curr.reg_date}</td>
                 <td>{curr.status}</td>
                 <tf><>
@@ -48,14 +46,23 @@ function ComplaintStore({
                 rejectcomplaint = {rejectcomplaint} 
                 complaint_id={curr.id} 
                 setShowPunishmentModal = {setShowPunishmentModal}/> 
-                </></tf>
+                </>
+                <InfoCircleOutlined style={{
+                  color:"blue",
+                  marginLeft:"30px",
+                  position:"relative",
+                  bottom:"2px",
+                  cursor:"pointer"
+                }}
+                onClick={()=>{
+                  setinfodata(curr);
+                  setShowInfoModal(true);
+                }}
+                />
+                </tf>
                </tr>
               }))
             }
-            
-              
-            
-
           </tbody>
         </table>
         <InfoComplaint 
