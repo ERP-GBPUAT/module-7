@@ -84,13 +84,36 @@
     padding-top: 30px;
 }
 .topbox{
-    padding-bottom: 30px;
+    margin-bottom: 30px;
+    padding:25px;
 }
 .infobox{
     display: flex;
     justify-content: space-between;
+    margin-top:13px;
 
 }
 .leftinfo{
     font-weight: bold;
+    font-size: 16px;
+    margin-left: 8px;
+    padding:20px;
+
+}
+.inforight{
+    font-size: 16px;
+    padding-left: 14px;
+    border-radius: 5px;
+    padding:20px;
+}
+.desc{
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    border-radius: 10px;
+    margin-right: 12px;
+    background-color:#43bef7;
+    
+    color:white;
 }

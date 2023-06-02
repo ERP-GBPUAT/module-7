@@ -99,33 +99,36 @@ const InfoComplaint = ({
   return (
     <>
       <Modal open={showinfomodal} onCancel={()=>setShowInfoModal(false)} closable={true} footer={null} className="info top-box" width={1000} >
-      <h4 className="topbox">Complainant Details-:</h4>
-      <div className='infobox'>
-        <div className='leftinfo'>
-          <p>Name :</p>
-          <p>Registration ID :</p>
-          <p>Name of Hostel :</p>
-          <p>Room Number :</p>
-          <p>Registration Date :</p>
-          <p>Moblie Number :</p>
-          <p>Type of Complaint:</p>
-          
+      <div style={{ padding:"19px"}}>
+        <div className='header'>
+        <h4 className="topbox">Complainant Details-:</h4>
         </div>
-        <div>
-          <p>{modalData.name}</p>
-          <p>{modalData.studentid}</p>
-          <p>{modalData.hostel_name}</p>
-          <p>{modalData.room}</p>
-          <p>{modalData.reg_date}</p>
-          <p>{modalData.phone}</p>
-          <p>{modalData.type_of_complaint}</p>
+        <div className='infobox'>
+          <div className='leftinfo'>
+            <p>Name :</p>
+            <p>Registration ID :</p>
+            <p>Name of Hostel :</p>
+            <p>Room Number :</p>
+            <p>Registration Date :</p>
+            <p>Moblie Number :</p>
+            <p>Type of Complaint:</p>
+            <p>Complaint in Breif:</p>
+            
+          </div>
+          <div className='inforight col-md-3'>
+            <p>{modalData.name}Dhruv</p>
+            <p>{modalData.studentid}55092</p>
+            <p>{modalData.hostel_name}VS</p>
+            <p>{modalData.room}130</p>
+            <p>{modalData.reg_date}123</p>
+            <p>{modalData.phone}123</p>
+            <p>{modalData.type_of_complaint}elec</p>
+            <p>{modalData.description}laksdjfalkj</p>
+            
+          </div>
           
+          </div>
         </div>
-        
-      </div>
-      <p className='leftinfo'>Complaint in Breif:</p>
-      <p>{modalData.description}</p>
-
       </Modal>
     </>
   );
