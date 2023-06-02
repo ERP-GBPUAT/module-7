@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import './styles.css';
-import { Input } from "antd";
 function Complaint (
-  {isstudent,setShowModal}
+  {isstudent,setShowModal,user}
 ) {
     const [complaintdata , setComplaintData] = useState({});
     const submitData = async()=>{
@@ -43,7 +42,7 @@ function Complaint (
             <label for="autoSizingInput" class="form-label" style={{
               fontSize:"16px"
             }}>
-              Student ID 
+              Registration ID 
             </label>
             <input
               type="number"

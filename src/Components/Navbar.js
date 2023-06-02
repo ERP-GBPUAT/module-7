@@ -1,9 +1,10 @@
 import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
+
 // import Modal from './Student/Modal';
 import { Modal } from "antd";
 import Complaint from './Student/Complaint';
@@ -12,7 +13,7 @@ import "./Navbar.css";
 
 function Navbar({isstudent}) {
   const [showModal, setShowModal] = useState(false);
-//  const navigate = useNavigate();
+ const navigate = useNavigate();
 //  function home(e) {
 //    navigate(`/home`);
 //  }
@@ -91,12 +92,15 @@ function Navbar({isstudent}) {
                 style={{ fontSize : "20px" }}
               /> */}
             <form class="d-flex" role="search">
-              <button class="btn" type="submit" className="logout">
-                {/* <FontAwesomeIcon
-                  icon={faPowerOff}
-                  className="text-black"
-                  style={{ fontSize: "20px", marginRight: "8px" }}
-                /> */}
+              <button class="btn" type="submit" className="logout" onClick={()=>{
+                
+                window.location.reload();
+                window.localStorage.removeItem("userdetails");
+                window.location.reload();
+                navigate("/login");
+                window.location.reload();
+                
+              }}> 
                 <FontAwesomeIcon
                   icon={faArrowRightFromBracket}
                   style={{ fontSize: "20px", marginRight:"8px" }}

@@ -2,25 +2,26 @@ import { React, useEffect, useState} from "react";
 import "./styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import FilterDropDown from "../../Containers/Dropdown";
+// import FilterDropDown from "../../Containers/Dropdown";
+import FilterDropDown from "./FilterDropDown";
 import InfoComplaint from "./InfoComplaint";
 import {Modal,Button,Space} from "antd"
 import Complaint from "./Complaint";
 import { InfoCircleOutlined } from "@ant-design/icons";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Profile ({isstudent}) {
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const [complaints,setComplaints] = useState();
   const [modalData,setModalData] = useState();
   const [stats,setStats] = useState({});
   const [complaintmodal,setcomplaintmodal] = useState(false);
-  //  const navigate = useNavigate();
-  //  function home(e) {
-  //    navigate(`/home`);
-  //  }
-
-  const getstats = async()=>{
-    await fetch("http://localhost:8080/hostelcomplaint/get_stats_hostel",{
+  const location = useLocation();
+  const userdetails = JSON.parse(window.localStorage.getItem("userdetails"));
+  const [user,setUser] = useState(userdetails);
+  const getstats = async(reg_id)=>{
+    await fetch(`http://localhost:8080/hostelcomplaint/get_stats_student_hostel?reg_id=${reg_id}`,{
       headers : {
         "Content-Type":"application/json",
       }
@@ -28,8 +29,8 @@ function Profile ({isstudent}) {
       setStats(JSON.parse(data.data));
     })
   }
-  const getfilteredComplaints = async(status)=>{
-    await fetch(`http://localhost:8080/hostelcomplaint/get_filtered_complaints_hostel?status=${status}`,{
+  const getfilteredComplaintsbyid = async(status,reg_id)=>{
+    await fetch(`http://localhost:8080/hostelcomplaint/get_filtered_complaintsbyid_hostel?status=${status}&reg_id=${reg_id}`,{
       method:"GET",
       headers : {
         "Content-Type":"application/json",
@@ -38,8 +39,8 @@ function Profile ({isstudent}) {
       setComplaints(data.data);
     })
   }
-  const getComplaints = async()=>{
-    await fetch("http://localhost:8080/hostelcomplaint/get_all_complaints_hostel",{
+  const getComplaints = async(reg_id)=>{
+    await fetch(`http://localhost:8080/hostelcomplaint/get_student_complaint_hostel?reg_id=${reg_id}`,{
       method:"GET",
       headers : {
         "Content-Type":"application/json",
@@ -50,8 +51,8 @@ function Profile ({isstudent}) {
     })
   }
     useEffect(()=>{
-      getComplaints();
-      getstats();
+      getComplaints(user.reg_id,user.level);
+      getstats(user.reg_id);
     },[complaintmodal])
     const openModal = (data) => {
       setModalData(data);
@@ -71,9 +72,9 @@ function Profile ({isstudent}) {
             style={{ fontSize: "7rem" }}
           />
           <div>
-            <h2 className="user-name">Aman Panwar</h2>
-            <h3 className="user-name">Information Technology</h3>
-            <h4 className="user-name">55077</h4>
+            <h2 className="user-name">{user.name} {`(${user.designation})`}</h2>
+            <h3 className="user-name">{user.branch}</h3>
+            <h4 className="user-name">{user.reg_id}</h4>
           </div>
           <div className="green-box">
             <div className="leaves">
@@ -120,7 +121,8 @@ function Profile ({isstudent}) {
           top:"80px",
           left:"20px",
         }}
-        getfilteredComplaints = {getfilteredComplaints}
+        getfilteredComplaints = {getfilteredComplaintsbyid}
+        user = {user}
         />
         <table class="table table-bordered caption-top" style={{
           marginBottom:"50px"
@@ -156,7 +158,7 @@ function Profile ({isstudent}) {
           <InfoComplaint isstudent = {isstudent} setShowInfoModal = {setShowModal} modalData = {modalData} showinfomodal={showModal}/>
       )}
       <Modal open={complaintmodal} width={"1000px"}  closable={true} onCancel={()=>setcomplaintmodal(false)} footer={null}>
-      <Complaint isstudent = {isstudent} setShowModal = {setcomplaintmodal} />
+      <Complaint isstudent = {isstudent} setShowModal = {setcomplaintmodal} user = {user}/>
       </Modal> 
       </>
     );  

@@ -4,12 +4,15 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import ComplaintStore from './ComplaintStore';
 import FilterDropDown from '../../Containers/Dropdown';
 import PunishmentModal from '../../Containers/PunishmentModal';
+import { useLocation } from 'react-router-dom';
 function Aprofile() { 
     const [complaints,setComplaints] = useState();
     const [showpunishmentmodal,setShowPunishmentModal] = useState(false);
     const [stats,setStats] = useState({});
     const [punishmentcomplaintid,setpunishmentcomplaintid] = useState();
     const [showinfomodal,setShowmodal] = useState(false);
+    const temp = JSON.parse(window.localStorage.getItem("userdetails"));
+    const [admin,setadmin] = useState(temp);
 
     const approvecomplaint = async(complaint_id)=>{
       await fetch("http://localhost:8080/hostelcomplaint/approve_complaint_hostel",{
@@ -52,8 +55,8 @@ function Aprofile() {
         console.log(data);
       })
     }
-    const getstats = async()=>{
-      await fetch("http://localhost:8080/hostelcomplaint/get_stats_hostel",{
+    const getstats = async(level)=>{
+      await fetch(`http://localhost:8080/hostelcomplaint/get_stats_hostel?level=${level}`,{
         headers : {
           "Content-Type":"application/json",
         }
@@ -61,8 +64,18 @@ function Aprofile() {
         setStats(JSON.parse(data.data));
       })
     }
-    const getfilteredComplaints = async(status)=>{
-      await fetch(`http://localhost:8080/hostelcomplaint/get_filtered_complaints_hostel?status=${status}`,{
+    const getfilteredComplaints = async(status,level)=>{
+      await fetch(`http://localhost:8080/hostelcomplaint/get_filtered_complaints_hostel?status=${status}&level=${level}`,{
+        method:"GET",
+        headers : {
+          "Content-Type":"application/json",
+        }
+      }).then((res)=>res.json()).then((data)=>{
+        setComplaints(data.data);
+      })
+    }
+    const getfilteredComplaintsbylvl = async(lvl)=>{
+      await fetch(`http://localhost:8080/hostelcomplaint/get_filtered_complaints_hostel?lvl=${lvl}`,{
         method:"GET",
         headers : {
           "Content-Type":"application/json",
@@ -83,8 +96,9 @@ function Aprofile() {
       })
     }
     useEffect(()=>{
-      getComplaints();
-      getstats();
+      // getComplaints();
+      getfilteredComplaintsbylvl(admin.level);
+      getstats(admin.level);
     },[])
     return (
       <>
@@ -95,8 +109,9 @@ function Aprofile() {
         style={{ fontSize: "7rem" }}
       />
       <div className="detail">
-        <h2 className="user-name">Govind Verma</h2>
-        <h3 className="user-name">Information Technology</h3>
+        <h2 className="user-name">{admin.name} {`(${admin.designation})`}</h2>
+        <h3 className="user-name">{admin.branch}</h3>
+        <h2 className="user-name">{admin.reg_id}</h2>
       </div>
       <div className="green-box">
         <div className="leaves">
@@ -117,7 +132,7 @@ function Aprofile() {
         </div>
       </div>
     </div>
-    <FilterDropDown getfilteredComplaints={getfilteredComplaints} style={{
+    <FilterDropDown getfilteredComplaints={getfilteredComplaints} admin = {admin}style={{
       marginLeft :"20px"
     }}/>
     {showpunishmentmodal ? <PunishmentModal  reject_complaint = {rejectcomplaint}setShowPunishmentModal = {setShowPunishmentModal} forward_complaint={forward_complaint} punishmentcomplaintid = {punishmentcomplaintid}/>:<div className="leave">
