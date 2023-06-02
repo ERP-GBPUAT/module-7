@@ -67,12 +67,12 @@ function Complaint (
               value={complaintdata.hostel_name ? complaintdata.hostel_name : ""} 
               >
                 <option selected>Select Hostel Name</option>
-                <option value="1">Tagore Bhawan</option>
-                <option value="2">Patel Bhawan</option>
-                <option value="3">Silver Jubilee Bhawan</option>
-                <option value="4">Vishvesharya Bhawan</option>
-                <option value="5">Saraswati Bhawan</option>
-                <option value="6">Mandakini Bhawan</option>
+                <option value="Tagore Bhawan">Tagore Bhawan</option>
+                <option value="Patel Bhawan">Patel Bhawan</option>
+                <option value="Silver Jubilee Bhawan">Silver Jubilee Bhawan</option>
+                <option value="Vishvesharya Bhawan">Vishvesharya Bhawan</option>
+                <option value="Saraswati Bhawan">Saraswati Bhawan</option>
+                <option value="Mandakini Bhawan">Mandakini Bhawan</option>
             </select>
           </div>}
 

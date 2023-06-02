@@ -11,7 +11,7 @@ import Complaint from './Student/Complaint';
 import "./Navbar.css";
 // import { useNavigate } from "react-router-dom";
 
-function Navbar({isstudent}) {
+function Navbar({isstudent,showlogout}) {
   const [showModal, setShowModal] = useState(false);
  const navigate = useNavigate();
 //  function home(e) {
@@ -29,7 +29,7 @@ function Navbar({isstudent}) {
     <>
       <nav
         className="navbar navbar-expand-lg bg-body-tertiary"
-        style={{ backgroundColor: "#e3f2fd" }}
+        style={showlogout ?{ backgroundColor: `#e3f2fd`} :  { backgroundColor: `white`} }
       >
         <div class="container-fluid">
           <a class="navbar-brand" href="#">
@@ -49,7 +49,7 @@ function Navbar({isstudent}) {
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <div className="home">
+              {/* <div className="home">
                 <FontAwesomeIcon
                   icon={faHouse}
                   className="text-black"
@@ -60,7 +60,7 @@ function Navbar({isstudent}) {
                     Home
                   </a>
                 </li>
-              </div>
+              </div> */}
               <div className="leave">
                 {/* {!isstudent && <FontAwesomeIcon
                   icon={faArrowRightFromBracket}
@@ -91,7 +91,7 @@ function Navbar({isstudent}) {
                 className="text-black"
                 style={{ fontSize : "20px" }}
               /> */}
-            <form class="d-flex" role="search">
+            {showlogout && <form class="d-flex" role="search">
               <button class="btn" type="submit" className="logout" onClick={()=>{
                 
                 window.location.reload();
@@ -107,7 +107,7 @@ function Navbar({isstudent}) {
                 />
                 Logout
               </button>
-            </form>
+            </form>}
           </div>
         </div>
       </nav>

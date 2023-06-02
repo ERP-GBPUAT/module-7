@@ -4,11 +4,13 @@ import { useEffect } from 'react';
 
 const ActionDropdown = ({
     setpunishmentcomplaintid,
+    setShowForwardModal,
   punishmentcomplaintid,
     complaint_id,
     approvecomplaint,
     rejectcomplaint,
     forward_complaint,
+    admin,
     setShowPunishmentModal}) => {
         useEffect(()=>{
             setpunishmentcomplaintid(complaint_id);
@@ -25,7 +27,7 @@ const ActionDropdown = ({
               key: '1',
             },
             {
-              label: <a onClick={()=>forward_complaint(complaint_id)}>Forward</a>,
+              label: admin.level<3 &&  <a onClick={()=>setShowForwardModal(true)}>Forward</a>,
               key: '3',
             },
           ];

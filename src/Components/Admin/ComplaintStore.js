@@ -6,12 +6,14 @@ import { faL } from "@fortawesome/free-solid-svg-icons";
 import InfoComplaint from "../Student/InfoComplaint";
 import { InfoCircleOutlined } from "@ant-design/icons";
 function ComplaintStore({
+  setShowForwardModal,
   setpunishmentcomplaintid,
   punishmentcomplaintid,
   setShowPunishmentModal,complaints,
   forward_complaint,
   approvecomplaint,
-  rejectcomplaint
+  rejectcomplaint,
+  admin
 }) {
 
   const [showinfomodal,setShowInfoModal] = useState(false);
@@ -39,6 +41,8 @@ function ComplaintStore({
                 <td>{curr.status}</td>
                 <tf><>
                 <ActionDropdown 
+                admin = {admin}
+                setShowForwardModal = {setShowForwardModal}
                 setpunishmentcomplaintid = {setpunishmentcomplaintid}
                 punishmentcomplaintid = {punishmentcomplaintid}
                 forward_complaint = {forward_complaint} 

@@ -10,21 +10,23 @@ function App() {
   const [isstudent,setIsstudent] = useState(false);
   const [isLoggedIn,setIsLoggedIn] = useState(false);
   const [userdetails,setUserdetails] = useState({});
+  const [showlogout,setshologout] = useState(false);
   return (
       <>
       <Router>
         <Routes>
         <Route path='/login' element={
            <>
+            <Navbar isstudent={true} showlogout={false}/>
             <Login isLoggedIn={isLoggedIn}  setIsLoggedIn={setIsLoggedIn} userdetails={userdetails}  setUserdetails={setUserdetails}/>
            </>} />
            <Route path='/student' element={
            <>
-           <Navbar isstudent={true}/>
+           <Navbar isstudent={true} showlogout={true}/>
            <Profile isstudent={true}/>
            </>} />
            <Route path='/admin' element={<>
-            <Navbar isstudent={false}/>
+            <Navbar isstudent={false} showlogout={true}/>
             <Aprofile/>
            </>} />
         </Routes>

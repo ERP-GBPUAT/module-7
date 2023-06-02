@@ -5,6 +5,9 @@ import ComplaintStore from './ComplaintStore';
 import FilterDropDown from '../../Containers/Dropdown';
 import PunishmentModal from '../../Containers/PunishmentModal';
 import { useLocation } from 'react-router-dom';
+import { Modal } from 'antd';
+import TextArea from 'antd/es/input/TextArea';
+import Analysis from '../../Containers/Analysis';
 function Aprofile() { 
     const [complaints,setComplaints] = useState();
     const [showpunishmentmodal,setShowPunishmentModal] = useState(false);
@@ -13,7 +16,8 @@ function Aprofile() {
     const [showinfomodal,setShowmodal] = useState(false);
     const temp = JSON.parse(window.localStorage.getItem("userdetails"));
     const [admin,setadmin] = useState(temp);
-
+    const [showforwardmodal,setShowForwardModal] = useState(false);
+    const [forwardnote , setforwardnote] = useState("");
     const approvecomplaint = async(complaint_id)=>{
       await fetch("http://localhost:8080/hostelcomplaint/approve_complaint_hostel",{
         method:"POST",
@@ -42,14 +46,15 @@ function Aprofile() {
         console.log("rej_complaint",data);
       })
     }
-    const forward_complaint = async(complaint_id)=>{
+    const forward_complaint = async(complaint_id,note)=>{
       await fetch("http://localhost:8080/hostelcomplaint/forward_complaint_hostel",{
         method:"POST",
         headers:{
           "Content-Type":"application/json"
         },
         body:JSON.stringify({
-          complaint_id:complaint_id
+          complaint_id:complaint_id,
+          forward_note : note
         })
       }).then((res)=>res.json()).then((data)=>{
         console.log(data);
@@ -132,6 +137,7 @@ function Aprofile() {
         </div>
       </div>
     </div>
+    {/* <Analysis/> */}
     <FilterDropDown getfilteredComplaints={getfilteredComplaints} admin = {admin}style={{
       marginLeft :"20px"
     }}/>
@@ -143,9 +149,18 @@ function Aprofile() {
        setShowPunishmentModal = {setShowPunishmentModal} 
        approvecomplaint = {approvecomplaint}
        rejectcomplaint = {rejectcomplaint}
+       admin = {admin}
        forward_complaint = {forward_complaint}
+       setShowForwardModal={setShowForwardModal}
        />
     </div>}
+    <Modal open={showforwardmodal} onOk={()=>{
+      forward_complaint(punishmentcomplaintid,forwardnote);
+      setShowForwardModal(false);
+    }} onCancel={()=>setShowForwardModal(false)} >
+      <h3>Add Forward Note</h3>
+      <TextArea  onChange={(e)=>setforwardnote(e.target.value)}/>
+    </Modal>
   </>);
 }
 
